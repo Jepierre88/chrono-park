@@ -5,13 +5,11 @@ import { LogOut, User } from "lucide-react";
 import { signOut, useSession } from "next-auth/react";
 
 export function AppTopBar() {
-
   const {data: session} = useSession();
-
   return (
-    <header className="flex items-center justify-between p-4">
+    <header className="flex items-center justify-between p-4 bg-primary text-primary-foreground">
 
-      <Menubar>
+      <Menubar className="bg-transparent border-0">
 
         <MenubarMenu>
           <MenubarTrigger>File</MenubarTrigger>
@@ -39,7 +37,7 @@ export function AppTopBar() {
       <Menubar className="bg-transparent border-0">
         <MenubarMenu>
           <MenubarTrigger>
-                <User />
+            <User />
             {session?.user?.name || "User"}
           </MenubarTrigger>
           <MenubarContent>
