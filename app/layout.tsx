@@ -1,5 +1,7 @@
 import "./globals.css";
 import { ubuntu, ubuntuSans } from "@/config/fonts";
+import RootProviders from "./providers";
+import { Toaster } from "sonner";
 
 export default function RootLayout({
   children,
@@ -11,7 +13,9 @@ export default function RootLayout({
       <body
         className={`${ubuntuSans.className} ${ubuntu.className} antialiased light`}
       >
-        {children}
+        <RootProviders>{children}
+          <Toaster richColors/>
+        </RootProviders>
       </body>
     </html>
   );

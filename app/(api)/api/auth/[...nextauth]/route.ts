@@ -2,6 +2,9 @@ import { ILoginResponseEntity } from "@/app/entities/auth/login-response.entity"
 import NextAuth from "next-auth"
 import Credentials from "next-auth/providers/credentials"
 
+import axios from "axios"
+import { environment } from "@/config/environment"
+
 declare module "next-auth" {
     interface User extends ILoginResponseEntity{
 
@@ -18,12 +21,14 @@ const handler = NextAuth({
             password: { label: "Password", type: "password" }
         },
         authorize: async (credentials) => {
-            if (
-                credentials &&
-                credentials.email === "user@example.com" &&
-                credentials.password === "pass123123"
-            ) {
-                return { id: "1", name: "User", email: "user@example.com" }
+            const res = await axios.post(`${environment.API_URL}/login`, {
+                email: credentials?.email,
+                password: credentials?.password
+            })
+            console.log("Response from login:", res.data)
+            if (res.status === 200) {
+                const user = res.data
+                return user
             }
             return null
         }

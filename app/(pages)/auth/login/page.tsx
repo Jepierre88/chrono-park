@@ -9,8 +9,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { ILoginParamsEntity } from "@/app/entities/auth/login-params.entity";
+import { toast } from "sonner";
+import { useState } from "react";
 
 export default function LoginPage() {
+
+    const [loading, setLoading] = useState(false);
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: zodResolver(LoginSchema),
@@ -18,11 +22,22 @@ export default function LoginPage() {
 
     const onSubmit = async (data: ILoginParamsEntity) => {
         try {
-            await login(data);
+            setLoading(true);
+            const result = await login(data);
+
+            if(!result) return toast.error("Error inesperado. No se pudo completar el login.");
+
+            if (result.error && result.status === 401) {
+                toast.error("Credenciales incorrectas. Por favor, verifica tu correo electrónico y contraseña.");
+                return;
+            }
         } catch (error) {
-            console.error("Login failed:", error);
+            toast.error("Error inesperado durante el login.");
+        } finally {
+            setLoading(false);
         }
     };
+
 
     return (
         <Card className="w-full max-w-sm">
@@ -62,7 +77,7 @@ export default function LoginPage() {
                     </div>
                 </CardContent>
                 <CardFooter className="flex-col gap-2">
-                    <Button type="submit" className="w-full">
+                    <Button type="submit" className="w-full" disabled={loading}>
                         Iniciar sesión
                     </Button>
                 </CardFooter>
