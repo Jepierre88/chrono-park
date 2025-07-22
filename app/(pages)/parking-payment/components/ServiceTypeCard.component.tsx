@@ -1,11 +1,11 @@
-import { getServices } from "@/app/actions/parking-payment/services.action";
+import { getParkingServices } from "@/app/actions/parking-payment/services.action";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { QrVisitorContent } from "./QrVisitorContent.component";
 
 export default async function ServiceTypeCard() {
 
-    const services = await getServices();
+    const services = await getParkingServices();
 
     return (
         <Card className="flex-1">

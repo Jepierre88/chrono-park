@@ -5,10 +5,15 @@ import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import { IServicesEntity } from "@/app/entities/parking-payment/services.entity";
 
-export const QrVisitorContent = ({ services }: { services: { id: string; name: string }[] }) => {
+export const QrVisitorContent = ({ services }: { services: IServicesEntity[] }) => {
     const [selectedService, setSelectedService] = useState<string | undefined>();
     const [payDay, setPayDay] = useState<boolean>(false);
+    
+    // Filter out services with missing required properties
+    const validServices = services.filter(service => service.id && service.name);
+    
     return (
         <form onSubmit={(e) => {
             e.preventDefault();
@@ -22,8 +27,8 @@ export const QrVisitorContent = ({ services }: { services: { id: string; name: s
                 </SelectTrigger>
                 <SelectContent>
                     <SelectGroup>
-                        {services.map((service) => (
-                            <SelectItem key={service.id.toString()} value={service.id.toString()}>
+                        {validServices.map((service) => (
+                            <SelectItem key={service.id} value={service.id!}>
                                 {service.name}
                             </SelectItem>
                         ))}
@@ -44,7 +49,6 @@ export const QrVisitorContent = ({ services }: { services: { id: string; name: s
                     Dia pago
                 </Label>
             </div>
-
 
             <input type="hidden" name="service" value={selectedService ?? ""} />
 
