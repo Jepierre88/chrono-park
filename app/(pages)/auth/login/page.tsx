@@ -31,7 +31,8 @@ export default function LoginPage() {
                 toast.error("Credenciales incorrectas. Por favor, verifica tu correo electrónico y contraseña.");
                 return;
             }
-        } catch (error) {
+        } catch (err) {
+            console.error("Error durante el login:", err);
             toast.error("Error inesperado durante el login.");
         } finally {
             setLoading(false);

@@ -1,10 +1,10 @@
 'use client'
 import { createContext, PropsWithChildren, useContext } from "react";
 
-const commonContext = createContext<any>({})
+export const CommonContext = createContext<Record<string, unknown> | null>(null);
 
 export const UseCommonContext = () => {
-    const context = useContext(commonContext);
+    const context = useContext(CommonContext);
     return context;
 }
 
@@ -12,10 +12,10 @@ export const CommonProvider = (props: PropsWithChildren) => {
 
 
     return (
-        <commonContext.Provider value={{
+        <CommonContext.Provider value={{
             
         }}>
             {props.children}
-        </commonContext.Provider>
+        </CommonContext.Provider>
     );
 }
