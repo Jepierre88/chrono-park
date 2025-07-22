@@ -6,7 +6,7 @@ export default async function ParkingPaymentPage() {
 
 
     return (
-        <section className="flex flex-col sm:flex-row gap-6 p-4">
+        <section className="flex flex-col lg:flex-row gap-6 p-4">
             <ServiceTypeCard/>
             <PaymentSummaryCard/>
             <PaymentCard/>
