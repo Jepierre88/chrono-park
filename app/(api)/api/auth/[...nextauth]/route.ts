@@ -25,10 +25,13 @@ const handler = NextAuth({
                 email: credentials?.email,
                 password: credentials?.password
             })
-            console.log("Response from login:", res.data)
             if (res.status === 200) {
                 const user = res.data
                 return user
+            } 
+
+            if (res.status === 401) {
+                throw new Error("Invalid credentials")
             }
             return null
         }
