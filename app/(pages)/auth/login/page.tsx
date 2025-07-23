@@ -11,10 +11,12 @@ import Link from "next/link";
 import { ILoginParamsEntity } from "@/app/entities/auth/login-params.entity";
 import { toast } from "sonner";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
 
     const [loading, setLoading] = useState(false);
+    const router = useRouter();
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: zodResolver(LoginSchema),
@@ -31,6 +33,10 @@ export default function LoginPage() {
                 toast.error("Credenciales incorrectas. Por favor, verifica tu correo electrónico y contraseña.");
                 return;
             }
+
+            router.push("/parking-payment");
+            
+
         } catch (err) {
             console.error("Error durante el login:", err);
             toast.error("Error inesperado durante el login.");

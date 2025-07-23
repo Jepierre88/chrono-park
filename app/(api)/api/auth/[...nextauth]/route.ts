@@ -14,6 +14,11 @@ declare module "next-auth" {
     }
 }
 
+declare module "next-auth/jwt" {
+    interface JWT extends ILoginResponseEntity {
+    }
+}
+
 const handler = NextAuth({
     providers: [Credentials({
         credentials: {
@@ -22,17 +27,16 @@ const handler = NextAuth({
         },
         name: "Credentials",
         authorize: async (credentials) => {
-
             let user = null
-
             const res: AxiosResponse<ILoginResponseEntity> = await axios.post(`${environment.API_URL}/login`, {
                 email: credentials?.email,
                 password: credentials?.password
             })
+
+
             if (res.status === 200) {
                 user = {
                     ...res.data,
-                    //TODO ID del usuario
                     id: res.data.token
                 }
                 return user
@@ -43,13 +47,19 @@ const handler = NextAuth({
     callbacks: {
         async jwt({ token, user }) {
             if (user) {
-                token.id = user.id
+                token = {
+                    ...token,
+                    ...user
+                }
             }
             return token
         },
         async session({ session, token }) {
             if (token) {
-                session.user.id = token.id as string
+                session.user = {
+                    ...token as ILoginResponseEntity,
+                    id: token.id as string
+                }
             }
             return session
         }
