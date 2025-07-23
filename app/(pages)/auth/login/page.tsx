@@ -1,17 +1,17 @@
 'use client';
-import { LoginSchema } from "@/app/schemas/auth/login.schema";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { login } from "@/app/actions/auth/login.action";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
-import { ILoginParamsEntity } from "@/app/entities/auth/login-params.entity";
 import { toast } from "sonner";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { ILoginParamsEntity } from "@/lib/auth/login-params.entity";
+import { login } from "@/lib/auth/login.action";
+import { LoginSchema } from "@/lib/auth/login.schema";
 
 export default function LoginPage() {
 

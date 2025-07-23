@@ -1,7 +1,7 @@
-import { getParkingServices } from "@/app/actions/parking-payment/services.action";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { QrVisitorContent } from "./QrVisitorContent.component";
+import { getParkingServices } from "@/lib/parking/services.action";
 
 export default async function ServiceTypeCard() {
 

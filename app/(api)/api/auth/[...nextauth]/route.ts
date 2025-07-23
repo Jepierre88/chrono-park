@@ -1,13 +1,12 @@
-import { ILoginResponseEntity } from "@/app/entities/auth/login-response.entity"
 import NextAuth from "next-auth"
 import Credentials from "next-auth/providers/credentials"
 
 import axios, { AxiosResponse } from "axios"
 import { environment } from "@/config/environment"
+import { ILoginResponseEntity } from "@/lib/auth/login-response.entity"
 
 declare module "next-auth" {
     interface User extends ILoginResponseEntity {
-        id: string;
     }
     interface Session {
         user: User

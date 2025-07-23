@@ -1,8 +1,8 @@
 'use client'
 import { useEffect, useState } from "react";
-import { IServicesEntity } from "@/app/entities/parking-payment/services.entity";
 import { AxiosError } from "axios";
-import axiosInstance from "../lib/axios.config";
+import { IServicesEntity } from "../parking/services.entity";
+import axiosInstance from "./axios.config";
 
 export default function UseServices() {
     const [services, setServices] = useState<IServicesEntity[]>([]);
