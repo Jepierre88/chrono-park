@@ -5,16 +5,16 @@ import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import { IServicesEntity } from "@/lib/parking/services.entity";
 import { UseCommonContext } from "@/lib/shared/common.context";
+import EServiceTypes from "@/lib/hooks/service-types.enum";
 
 export const QrVisitorContent = () => {
     const [selectedService, setSelectedService] = useState<string | undefined>();
     const [payDay, setPayDay] = useState<boolean>(false);
 
-    const { services }: { services: IServicesEntity[] } = UseCommonContext();
-
-    const validServices = services.filter(service => service.id && service.name);
+    const {
+        services
+    } = UseCommonContext();
     
     return (
         <form onSubmit={(e) => {
@@ -25,12 +25,12 @@ export const QrVisitorContent = () => {
             </header>
             <Select value={selectedService} onValueChange={setSelectedService}>
                 <SelectTrigger className="w-[180px]">
-                    <SelectValue placeholder="Seleccionar Servicio" />
+                    <SelectValue placeholder="Seleccionar Servicio" defaultValue={undefined} />
                 </SelectTrigger>
                 <SelectContent>
                     <SelectGroup>
-                        {validServices.map((service) => (
-                            <SelectItem key={service.id} value={service.id!}>
+                        {services[EServiceTypes.VISITANTE] && services[EServiceTypes.VISITANTE].map((service) => (
+                            <SelectItem key={service.id} value={service.id.toString()} defaultChecked={false}>
                                 {service.name}
                             </SelectItem>
                         ))}
