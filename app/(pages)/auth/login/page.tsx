@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 import { ILoginParamsEntity } from "@/lib/types/entities/auth/login-params.entity";
 import { login } from "@/lib/actions/auth/login.action";
 import { LoginSchema } from "@/lib/types/schemas/login.schema";
+import { loginService } from "@/lib/services/login.service";
 
 export default function LoginPage() {
 
@@ -25,17 +26,11 @@ export default function LoginPage() {
     const onSubmit = async (data: ILoginParamsEntity) => {
         try {
             setLoading(true);
-            const result = await login(data);
+            const result = await loginService(data);
 
             if(!result) return toast.error("Error inesperado. No se pudo completar el login.");
 
-            if (result.error && result.status === 401) {
-                toast.error("Credenciales incorrectas. Por favor, verifica tu correo electrónico y contraseña.");
-                return;
-            }
-
-            router.push("/parking-payment");
-            
+            await login(result).then((res) => router.push("/parking-payment"));
 
         } catch (err) {
             console.error("Error durante el login:", err);

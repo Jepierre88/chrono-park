@@ -1,7 +1,7 @@
-import { ILoginParamsEntity } from "@/lib/types/entities/auth/login-params.entity";
+import { ILoginResponseEntity } from "@/lib/types/entities/auth/login-response.entity";
 import { signIn } from "next-auth/react";
 
-export async  function login(data: ILoginParamsEntity) {
+export async  function login(data: ILoginResponseEntity) {
     try {
         const result = await signIn("credentials", {
             ...data,
