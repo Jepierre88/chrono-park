@@ -1,4 +1,3 @@
-// Servicios encargados de consumir APIS desde el lado del servidor
 import { ILoginResponseEntity } from "@/lib/types/entities/auth/login-response.entity";
 import { signIn } from "next-auth/react";
 

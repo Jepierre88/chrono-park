@@ -1,5 +1,5 @@
 import * as React from "react"
-import { cn } from "@/lib/shared/utils"
+import { cn } from "@/lib/utils"
 import { Eye, EyeOff } from "lucide-react"
 
 type InputProps = React.ComponentProps<"input"> & {

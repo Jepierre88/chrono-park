@@ -14,7 +14,7 @@ export default function RootLayout({
         className={`${ubuntuSans.className} ${ubuntu.className} antialiased light`}
       >
         <RootProviders>{children}
-          <Toaster richColors/>
+
         </RootProviders>
       </body>
     </html>
