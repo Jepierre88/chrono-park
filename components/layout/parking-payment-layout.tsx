@@ -6,7 +6,7 @@ import { SidebarTrigger } from "../ui/sidebar"
 import { cookies } from "next/headers"
 export default async function ParkingPaymentLayout(props: PropsWithChildren) {
     const cookieStore = await cookies()
-    const defaultOpenMenu = cookieStore.get("defaultOpenMenu")?.value === "true" || false
+    const defaultOpenMenu = cookieStore.get("sidebar_state")?.value === "true" || false
     return (
         <Providers defaultOpenMenu={defaultOpenMenu}>
             <AppSidebar />
