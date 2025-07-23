@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from "react";
 import { AxiosError } from "axios";
-import EServiceTypes from "../../../types/enums/service-types.enum";
+import EServiceTypes from "../../types/enums/service-types.enum";
 import { IServicesEntity } from "@/lib/types/entities/parking-payment/services.entity";
 import { axiosWithoutToast } from "@/lib/shared/axios.config";
 
