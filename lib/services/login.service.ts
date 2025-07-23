@@ -1,4 +1,5 @@
-// lib/auth/login-service.ts
+// Servicios encargados de consumir APIS desde el lado del cliente
+
 import { ILoginParamsEntity } from "@/lib/types/entities/auth/login-params.entity";
 import { ILoginResponseEntity } from "@/lib/types/entities/auth/login-response.entity";
 import { axiosWithToast } from "../shared/axios.config";
