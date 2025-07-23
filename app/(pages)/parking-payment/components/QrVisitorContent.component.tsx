@@ -5,13 +5,15 @@ import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import { IServicesEntity } from "@/app/entities/parking-payment/services.entity";
+import { IServicesEntity } from "@/lib/parking/services.entity";
+import { UseCommonContext } from "@/lib/shared/common.context";
 
-export const QrVisitorContent = ({ services }: { services: IServicesEntity[] }) => {
+export const QrVisitorContent = () => {
     const [selectedService, setSelectedService] = useState<string | undefined>();
     const [payDay, setPayDay] = useState<boolean>(false);
-    
-    // Filter out services with missing required properties
+
+    const { services }: { services: IServicesEntity[] } = UseCommonContext();
+
     const validServices = services.filter(service => service.id && service.name);
     
     return (

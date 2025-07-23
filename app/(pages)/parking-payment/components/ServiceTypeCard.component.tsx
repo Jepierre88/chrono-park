@@ -1,12 +1,8 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { QrVisitorContent } from "./QrVisitorContent.component";
-import { getParkingServices } from "@/lib/parking/services.action";
 
 export default async function ServiceTypeCard() {
-
-    const services = await getParkingServices();
-
     return (
         <Card className="flex-1">
             <CardHeader>
@@ -19,7 +15,7 @@ export default async function ServiceTypeCard() {
                     <TabsTrigger value="qrMonthly">Mensualidad(QR)</TabsTrigger>
                 </TabsList>
                 <TabsContent value="qrVisitor">
-                    <QrVisitorContent services={services} />
+                    <QrVisitorContent />
                 </TabsContent>
                 <TabsContent value="qrMonthly">Contenido para Mensualidad(QR)</TabsContent>
             </Tabs>

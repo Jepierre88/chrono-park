@@ -2,7 +2,7 @@
 import { createContext, PropsWithChildren, useContext } from "react";
 import UseServices from "./UseServices";
 
-export const CommonContext = createContext<Record<string, unknown> | null>(null);
+export const CommonContext = createContext<any>(undefined);
 
 export const UseCommonContext = () => {
     const context = useContext(CommonContext);
