@@ -7,6 +7,7 @@ import { ILoginResponseEntity } from "@/lib/auth/login-response.entity"
 
 declare module "next-auth" {
     interface User extends ILoginResponseEntity {
+        id: string;
     }
     interface Session {
         user: User
@@ -15,6 +16,7 @@ declare module "next-auth" {
 
 declare module "next-auth/jwt" {
     interface JWT extends ILoginResponseEntity {
+        id: string;
     }
 }
 

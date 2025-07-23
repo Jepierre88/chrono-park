@@ -1,6 +1,6 @@
 'use client'
 
-import { CommonProvider } from "@/app/contexts/common/common.context";
+import { CommonProvider } from "@/lib/shared/common.context";
 import { PropsWithChildren } from "react";
 
 export default function ParkingPaymentProviders(props: PropsWithChildren) {

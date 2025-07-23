@@ -3,39 +3,37 @@ import axios, { AxiosInstance, AxiosResponse, AxiosError, InternalAxiosRequestCo
 import { getSession } from 'next-auth/react';
 import { toast } from 'sonner';
 
-const session = await getSession()
-
 const axiosInstance: AxiosInstance = axios.create({
     baseURL: environment.API_URL,
     timeout: environment.AXIOS_TIMEOUT,
     headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'Authorization': session?.user?.token ? `Bearer ${session.user.token}` : ''
     },
 });
 
 axiosInstance.interceptors.request.use(
     async (config: InternalAxiosRequestConfig) => {
-        try {
-            if (process.env.NODE_ENV === 'development') {
-                console.log(`🚀 Request: ${config.method?.toUpperCase()} ${config.url}`, {
-                    data: config.data,
-                    params: config.params,
-                });
-            }
-
-            return config;
-        } catch (error) {
-            console.error('Error en interceptor de request:', error);
-            return Promise.reject(error);
+        const session = await getSession();
+        if (session?.user?.token) {
+            config.headers.Authorization = `Bearer ${session.user.token}`;
         }
+
+        if (process.env.NODE_ENV === 'development') {
+            console.log(`🚀 Request: ${config.method?.toUpperCase()} ${config.url}`, {
+                data: config.data,
+                params: config.params,
+            });
+        }
+
+        return config;
     },
     (error: AxiosError) => {
         console.error('Error en configuración de request:', error);
         return Promise.reject(error);
     }
 );
+
 
 // Interceptor de Response
 axiosInstance.interceptors.response.use(
