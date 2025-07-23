@@ -3,9 +3,12 @@ import Providers from "./providers"
 
 import {  AppSidebar } from "./AppBar"
 import { SidebarTrigger } from "../ui/sidebar"
-export default function ParkingPaymentLayout(props: PropsWithChildren) {
+import { cookies } from "next/headers"
+export default async function ParkingPaymentLayout(props: PropsWithChildren) {
+    const cookieStore = await cookies()
+    const defaultOpenMenu = cookieStore.get("defaultOpenMenu")?.value === "true" || false
     return (
-        <Providers>
+        <Providers defaultOpenMenu={defaultOpenMenu}>
             <AppSidebar />
             <SidebarTrigger/>
             <main>
