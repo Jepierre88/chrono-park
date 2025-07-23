@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { AxiosError } from "axios";
 import { IServicesEntity } from "../parking/services.entity";
-import axiosInstance from "../shared/axios.config";
+import { axiosWithoutToast } from "../shared/axios.config";
 import EServiceTypes from "./service-types.enum";
 
 export default function UseServices() {
@@ -16,10 +16,9 @@ export default function UseServices() {
             setError(null);
 
             const responses = await Promise.all([
-                axiosInstance.get<IServicesEntity[]>(`/services`, {headers: { 'type': EServiceTypes.VISITANTE }}),
-                axiosInstance.get<IServicesEntity[]>(`/services`, {headers: { 'type': EServiceTypes.MENSUALIDAD }})
+                axiosWithoutToast.get<IServicesEntity[]>(`/servicess`, {headers: { 'type': EServiceTypes.VISITANTE }}),
+                axiosWithoutToast.get<IServicesEntity[]>(`/servicess`, {headers: { 'type': EServiceTypes.MENSUALIDAD }})
             ]);
-
             const data: Record<EServiceTypes, IServicesEntity[]> = {
                 [EServiceTypes.VISITANTE]: responses[0].data,
                 [EServiceTypes.MENSUALIDAD]: responses[1].data
