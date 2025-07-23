@@ -25,7 +25,7 @@ export const QrVisitorContent = ({ services }: { services: IServicesEntity[] }) 
     // Initialize the form with default values
     const { control, handleSubmit, watch, setValue } = useForm<FormValues>({
         defaultValues: {
-            selectedService: paymentData.selectedService ?? "",
+            selectedService: paymentData.selectedService ? paymentData.selectedService.toString() : "",
             identificationCode: paymentData.identificationCode ?? "",
             payDay: false,
             plate: "",

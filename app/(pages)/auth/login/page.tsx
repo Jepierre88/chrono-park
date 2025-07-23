@@ -30,7 +30,7 @@ export default function LoginPage() {
 
             if(!result) return toast.error("Error inesperado. No se pudo completar el login.");
 
-            await login(result).then((res) => router.push("/parking-payment"));
+            await login(result).then(() => router.push("/parking-payment"));
 
         } catch (err) {
             console.error("Error durante el login:", err);
