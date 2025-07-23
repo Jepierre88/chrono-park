@@ -1,6 +1,6 @@
 import * as React from "react"
 import { cn } from "@/lib/shared/utils"
-import { Eye, EyeOff, Search } from "lucide-react"
+import { Eye, EyeOff } from "lucide-react"
 
 type InputProps = React.ComponentProps<"input"> & {
   variant?: "default" | "withIcon" | "password" | "solid" | "readonly" 

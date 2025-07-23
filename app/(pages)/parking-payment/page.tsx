@@ -1,6 +1,6 @@
-import ServiceTypeCard from "./components/ServiceTypeCard.component";
 import PaymentSummaryCard from "./components/PaymentSummaryCard.component";
 import PaymentCard from "./components/PaymentCard.component";
+import ServiceTypeCard from "./components/service-type-card.component";
 
 export const dynamic = 'force-dynamic';
 

@@ -1,4 +1,4 @@
-import ParkingPaymentLayout from "@/components/layout/ParkingPaymentLayout";
+import ParkingPaymentLayout from "@/components/layout/parking-payment-layout";
 import { CommonProvider } from "@/lib/shared/common.context";
 import { PropsWithChildren } from "react";
 

@@ -1,7 +1,7 @@
 import { environment } from "@/config/environment"
 import { AuthOptions } from "next-auth"
-import axiosServerInstance from "../shared/axios-server.config"
-import { ILoginResponseEntity } from "./login-response.entity"
+import axiosServerInstance from "./axios-server.config"
+import { ILoginResponseEntity } from "../auth/login-response.entity"
 import Credentials from "next-auth/providers/credentials"
 
 export const authOptions:AuthOptions = {

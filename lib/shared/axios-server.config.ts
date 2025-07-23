@@ -2,7 +2,7 @@
 import { environment } from '@/config/environment';
 import axios, { AxiosInstance } from 'axios';
 import { getServerSession } from 'next-auth/next';
-import { authOptions } from '../auth/nextAuthConfig';
+import { authOptions } from './next-auth.config';
 
 const axiosServerInstance: AxiosInstance = axios.create({
     baseURL: environment.API_URL,

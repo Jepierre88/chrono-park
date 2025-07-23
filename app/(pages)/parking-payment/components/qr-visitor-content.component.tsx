@@ -16,10 +16,10 @@ export const QrVisitorContent = ({ services }: { services: IServicesEntity[] }) 
         <form onSubmit={(e) => {
             e.preventDefault();
         }}>
-            <div>
-                <Label>Tipo de visitante</Label>
+            <div className="grid grid-cols-2 gap-4">
+                <Label className="w-full justify-end flex font-semibold">Tipo de visitante</Label>
                 <Select value={selectedService} onValueChange={setSelectedService}>
-                    <SelectTrigger className="w-[180px]">
+                    <SelectTrigger className="w-full">
                         <SelectValue placeholder="Seleccionar Servicio" />
                     </SelectTrigger>
                     <SelectContent>
@@ -34,40 +34,38 @@ export const QrVisitorContent = ({ services }: { services: IServicesEntity[] }) 
                 </Select>
             </div>
 
-            <div className="flex items-center mt-4">
+            <div className="grid grid-cols-2 gap-4 mt-4">
+                <Label className="w-full justify-end flex font-semibold text-nowrap">Código QR</Label>
+                <div className=" w-full">
+                    <Input className="w-full" placeholder="xxxxx-xxx-xxx" />
+                </div>
+            </div>
+
+
+            <div className="grid grid-cols-2 gap-4 mt-4">
+                <Label className="w-full justify-end flex font-semibold text-nowrap">Placa</Label>
+                <Input className="w-full" placeholder="ABC-1234" />
+            </div>
+
+            <div className="grid grid-cols-2 gap-4 mt-4 items-center">
+                <Label className="w-full justify-end flex font-semibold text-nowrap">Pagar día completo</Label>
                 <Checkbox
-                    className="ml-0"
                     name="payDay"
                     checked={payDay}
                     onCheckedChange={(e: boolean) => {
                         setPayDay(e);
                     }}
                 />
-                <Label className="ml-2" htmlFor="payDay">
-                    Dia pago
-                </Label>
             </div>
 
-
-            <div>
-                <Label>Código QR</Label>
-                <Input placeholder="xxxxx-xxx-xxx">
-                </Input>
+            <div className="grid grid-cols-2 gap-4 mt-4">
+                <Label className="w-full justify-end flex font-semibold text-nowrap">Código de descuento</Label>
+                <Input className="w-full" placeholder="XXXX-XXXX-XXXX" />
             </div>
 
-            <div>
-                <Label>Placa</Label>
-                <Input placeholder="ABC-1234" />
-            </div>
-
-            <div>
-                <Label>Código de descuento</Label>
-                <Input placeholder="XXXX-XXXX-XXXX" />
-            </div>
-
-            <div>
-                <Label>Fecha de entrada</Label>
-                <span>{new Date().toLocaleDateString()}</span>
+            <div className="grid grid-cols-2 gap-4 mt-4">
+                <Label className="w-full justify-end flex font-semibold text-nowrap">Fecha de entrada</Label>
+                <span>{new Date().toLocaleString("es-CO")}</span>
             </div>
 
 
