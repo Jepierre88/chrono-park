@@ -4,6 +4,7 @@ import Credentials from "next-auth/providers/credentials"
 import axios, { AxiosResponse } from "axios"
 import { environment } from "@/config/environment"
 import { ILoginResponseEntity } from "@/lib/auth/login-response.entity"
+import axiosServerInstance from "@/lib/shared/axios-server.config"
 
 declare module "next-auth" {
     interface User extends ILoginResponseEntity {
@@ -29,12 +30,10 @@ const handler = NextAuth({
         name: "Credentials",
         authorize: async (credentials) => {
             let user = null
-            const res: AxiosResponse<ILoginResponseEntity> = await axios.post(`${environment.API_URL}/login`, {
+            const res = await axiosServerInstance.post<ILoginResponseEntity>("/login", {
                 email: credentials?.email,
                 password: credentials?.password
             })
-
-
             if (res.status === 200) {
                 user = {
                     ...res.data,

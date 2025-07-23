@@ -6,15 +6,12 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVa
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { UseCommonContext } from "@/lib/shared/common.context";
-import EServiceTypes from "@/lib/hooks/service-types.enum";
+import EServiceTypes from "@/lib/hooks/parking-payment/services/service-types.enum";
+import { IServicesEntity } from "@/lib/parking/services.entity";
 
-export const QrVisitorContent = () => {
+export const QrVisitorContent = ({ services }: { services: IServicesEntity[] }) => {
     const [selectedService, setSelectedService] = useState<string>("");
     const [payDay, setPayDay] = useState<boolean>(false);
-
-    const {
-        services
-    } = UseCommonContext();
     
     return (
         <form onSubmit={(e) => {
@@ -29,7 +26,7 @@ export const QrVisitorContent = () => {
                 </SelectTrigger>
                 <SelectContent>
                     <SelectGroup>
-                        {services[EServiceTypes.VISITANTE] && services[EServiceTypes.VISITANTE].map((service) => (
+                        {services && services.map((service) => (
                             <SelectItem key={service.id} value={service.id.toString()} defaultChecked={false}>
                                 {service.name}
                             </SelectItem>

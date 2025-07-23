@@ -1,9 +1,9 @@
 'use client'
 import { useEffect, useState } from "react";
 import { AxiosError } from "axios";
-import { IServicesEntity } from "../parking/services.entity";
-import { axiosWithoutToast } from "../shared/axios.config";
 import EServiceTypes from "./service-types.enum";
+import { IServicesEntity } from "@/lib/parking/services.entity";
+import { axiosWithoutToast } from "@/lib/shared/axios.config";
 
 export default function UseServices() {
     const [services, setServices] = useState<Record<string, IServicesEntity[]>>({});
@@ -16,8 +16,8 @@ export default function UseServices() {
             setError(null);
 
             const responses = await Promise.all([
-                axiosWithoutToast.get<IServicesEntity[]>(`/servicess`, {headers: { 'type': EServiceTypes.VISITANTE }}),
-                axiosWithoutToast.get<IServicesEntity[]>(`/servicess`, {headers: { 'type': EServiceTypes.MENSUALIDAD }})
+                axiosWithoutToast.get<IServicesEntity[]>(`/services`, {headers: { 'type': EServiceTypes.VISITANTE }}),
+                axiosWithoutToast.get<IServicesEntity[]>(`/services`, {headers: { 'type': EServiceTypes.MENSUALIDAD }})
             ]);
             const data: Record<EServiceTypes, IServicesEntity[]> = {
                 [EServiceTypes.VISITANTE]: responses[0].data,

@@ -1,6 +1,6 @@
 'use client'
 import { createContext, PropsWithChildren, useContext } from "react";
-import UseServices from "../hooks/UseServices";
+import UseServices from "../hooks/parking-payment/services/UseServices";
 import { IServicesEntity } from "../parking/services.entity";
 
 // Definir la interfaz del contexto
