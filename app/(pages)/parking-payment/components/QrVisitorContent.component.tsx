@@ -9,7 +9,7 @@ import { UseCommonContext } from "@/lib/shared/common.context";
 import EServiceTypes from "@/lib/hooks/service-types.enum";
 
 export const QrVisitorContent = () => {
-    const [selectedService, setSelectedService] = useState<string | undefined>();
+    const [selectedService, setSelectedService] = useState<string>("");
     const [payDay, setPayDay] = useState<boolean>(false);
 
     const {
@@ -25,7 +25,7 @@ export const QrVisitorContent = () => {
             </header>
             <Select value={selectedService} onValueChange={setSelectedService}>
                 <SelectTrigger className="w-[180px]">
-                    <SelectValue placeholder="Seleccionar Servicio" defaultValue={undefined} />
+                    <SelectValue placeholder="Seleccionar Servicio" />
                 </SelectTrigger>
                 <SelectContent>
                     <SelectGroup>
