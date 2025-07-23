@@ -113,39 +113,39 @@ axiosInstance.interceptors.response.use(
 
 // Funciones wrapper
 export const axiosWithToast = {
-    get: <T = any>(url: string, config?: AxiosRequestConfig) => 
+    get: <T = unknown>(url: string, config?: AxiosRequestConfig) => 
         axiosInstance.get<T>(url, config),
     
-    post: <T = any>(url: string, data?: any, config?: AxiosRequestConfig) => 
+    post: <T = unknown>(url: string, data?: unknown, config?: AxiosRequestConfig) => 
         axiosInstance.post<T>(url, data, config),
     
-    put: <T = any>(url: string, data?: any, config?: AxiosRequestConfig) => 
+    put: <T = unknown>(url: string, data?: unknown, config?: AxiosRequestConfig) => 
         axiosInstance.put<T>(url, data, config),
     
-    delete: <T = any>(url: string, config?: AxiosRequestConfig) => 
+    delete: <T = unknown>(url: string, config?: AxiosRequestConfig) => 
         axiosInstance.delete<T>(url, config),
 };
 
 export const axiosWithoutToast = {
-    get: <T = any>(url: string, config?: AxiosRequestConfig) => 
+    get: <T = unknown>(url: string, config?: AxiosRequestConfig) => 
         axiosInstance.get<T>(url, { 
             ...config, 
             headers: { ...config?.headers, 'X-Show-Toast': 'false' } 
         }),
     
-    post: <T = any>(url: string, data?: any, config?: AxiosRequestConfig) => 
+    post: <T = unknown>(url: string, data?: unknown, config?: AxiosRequestConfig) => 
         axiosInstance.post<T>(url, data, { 
             ...config, 
             headers: { ...config?.headers, 'X-Show-Toast': 'false' } 
         }),
-    
-    put: <T = any>(url: string, data?: any, config?: AxiosRequestConfig) => 
+
+    put: <T = unknown>(url: string, data?: unknown, config?: AxiosRequestConfig) => 
         axiosInstance.put<T>(url, data, { 
             ...config, 
             headers: { ...config?.headers, 'X-Show-Toast': 'false' } 
         }),
     
-    delete: <T = any>(url: string, config?: AxiosRequestConfig) => 
+    delete: <T = unknown>(url: string, config?: AxiosRequestConfig) => 
         axiosInstance.delete<T>(url, { 
             ...config, 
             headers: { ...config?.headers, 'X-Show-Toast': 'false' } 
