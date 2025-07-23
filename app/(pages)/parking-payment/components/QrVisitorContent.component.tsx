@@ -5,8 +5,6 @@ import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import { UseCommonContext } from "@/lib/shared/common.context";
-import EServiceTypes from "@/lib/hooks/parking-payment/services/service-types.enum";
 import { IServicesEntity } from "@/lib/parking/services.entity";
 
 export const QrVisitorContent = ({ services }: { services: IServicesEntity[] }) => {
