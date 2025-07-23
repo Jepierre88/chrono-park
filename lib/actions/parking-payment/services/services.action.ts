@@ -1,7 +1,7 @@
 'use server'
 
-import EServiceTypes from "@/lib/hooks/parking-payment/services/service-types.enum";
-import { IServicesEntity } from "@/lib/parking/services.entity";
+import EServiceTypes from "@/lib/types/enums/service-types.enum";
+import { IServicesEntity } from "@/lib/types/entities/parking-payment/services.entity";
 import axiosServerInstance from "@/lib/shared/axios-server.config"
 
 export async function getServices() {

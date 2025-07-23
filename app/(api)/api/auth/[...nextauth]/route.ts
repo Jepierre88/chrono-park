@@ -1,5 +1,5 @@
 import NextAuth from "next-auth"
-import { ILoginResponseEntity } from "@/lib/auth/login-response.entity"
+import { ILoginResponseEntity } from "@/lib/types/entities/auth/login-response.entity"
 import { authOptions } from "@/lib/shared/next-auth.config";
 
 declare module "next-auth" {

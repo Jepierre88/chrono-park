@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import { IServicesEntity } from "@/lib/parking/services.entity";
+import { IServicesEntity } from "@/lib/types/entities/parking-payment/services.entity";
 import { Input } from "@/components/ui/input";
 
 export const QrVisitorContent = ({ services }: { services: IServicesEntity[] }) => {
@@ -67,11 +67,7 @@ export const QrVisitorContent = ({ services }: { services: IServicesEntity[] }) 
                 <Label className="w-full justify-end flex font-semibold text-nowrap">Fecha de entrada</Label>
                 <span>{new Date().toLocaleString("es-CO")}</span>
             </div>
-
-
             <input type="hidden" name="service" value={selectedService ?? ""} />
-
-            <Button type="submit">Confirmar</Button>
         </form>
     )
 }

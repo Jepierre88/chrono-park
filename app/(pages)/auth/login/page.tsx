@@ -9,9 +9,9 @@ import Link from "next/link";
 import { toast } from "sonner";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { ILoginParamsEntity } from "@/lib/auth/login-params.entity";
-import { login } from "@/lib/auth/login.action";
-import { LoginSchema } from "@/lib/auth/login.schema";
+import { ILoginParamsEntity } from "@/lib/types/entities/auth/login-params.entity";
+import { login } from "@/lib/actions/auth/login.action";
+import { LoginSchema } from "@/lib/types/schemas/login.schema";
 
 export default function LoginPage() {
 

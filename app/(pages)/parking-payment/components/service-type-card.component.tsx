@@ -1,8 +1,8 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getServices } from "@/lib/actions/parking-payment/services/services.action";
-import EServiceTypes from "@/lib/hooks/parking-payment/services/service-types.enum";
-import { QrVisitorContent } from "./qr-visitor-content.component";
+import EServiceTypes from "@/lib/types/enums/service-types.enum";
+import { QrVisitorContent } from "./tabs-content/qr-visitor-content.component";
 
 export default async function ServiceTypeCard() {
         const services = await getServices()
