@@ -1,4 +1,4 @@
-import NextAuth from "next-auth"
+import NextAuth, { AuthOptions } from "next-auth"
 import Credentials from "next-auth/providers/credentials"
 
 import axios, { AxiosResponse } from "axios"
@@ -21,7 +21,7 @@ declare module "next-auth/jwt" {
     }
 }
 
-const handler = NextAuth({
+export const authOptions:AuthOptions = {
     providers: [Credentials({
         credentials: {
             email: { label: "Email", type: "text", placeholder: "user@example.com" },
@@ -57,7 +57,7 @@ const handler = NextAuth({
         async session({ session, token }) {
             if (token) {
                 session.user = {
-                    ...token as ILoginResponseEntity,
+                    ...token,
                     id: token.id as string
                 }
             }
@@ -70,6 +70,8 @@ const handler = NextAuth({
 
     },
     secret: environment.AUTH_SECRET,
-})
+}
+const handler = NextAuth(authOptions)
+
 
 export { handler as GET, handler as POST }

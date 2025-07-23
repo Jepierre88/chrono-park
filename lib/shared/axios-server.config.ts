@@ -1,4 +1,5 @@
 // lib/shared/axios-server.config.ts
+import { authOptions } from '@/app/(api)/api/auth/[...nextauth]/route';
 import { environment } from '@/config/environment';
 import axios, { AxiosInstance } from 'axios';
 import { getServerSession } from 'next-auth/next';
@@ -14,18 +15,13 @@ const axiosServerInstance: AxiosInstance = axios.create({
 
 // Interceptor para servidor
 axiosServerInstance.interceptors.request.use(
+    
     async (config) => {
-        // Obtener sesión en servidor
-        const session = await getServerSession();
-
-        console.log(session)
-        
+        const session = await getServerSession(authOptions);
         if (session?.user?.token) {
             config.headers.Authorization = `Bearer ${session.user.token}`;
         }
-
         console.log(`🚀 Server Request: ${config.method?.toUpperCase()} ${config.url}`);
-        
         return config;
     },
     (error) => {

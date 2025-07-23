@@ -8,5 +8,5 @@ export interface ILoginResponseEntity {
     cellPhoneNumber: string
     deviceNme: string
     expirationDateInMinutes: number
-    permissions: object[]
+    permissions: number[]
 }
