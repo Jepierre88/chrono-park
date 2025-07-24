@@ -25,7 +25,7 @@ export interface IPaymentData{
 	vehicleKind: string;
 	selectedService: number | string;
 	totalParking?: number;
-	totalServices?: number;
+	totalServices: number;
 	netTotalServices?: number;
 	services?: unknown[];
 	netTotal?: number;
@@ -62,10 +62,11 @@ export const initialPaymentData: IPaymentData = {
     identificationCode: "",
     plate: "",
     discountCode: "",
+	totalServices: 0,
     cashier: "",
     concept: "",
     customType: "",
-    datetime: new Date().toISOString(),
+    datetime: "",
     discountTotal: 0,
     total: 0,
     extraServices: [],
@@ -90,5 +91,6 @@ export const initialPaymentData: IPaymentData = {
         expectedOutcomeDatetime: "",
         validationDatetime: "",
     },
+	startDateTime: "",
 
 }

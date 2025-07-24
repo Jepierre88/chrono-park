@@ -9,9 +9,6 @@ export default async function ServiceTypeCard() {
 
     return (
         <Card className="flex-1">
-            <CardHeader>
-                <h2 className="text-lg font-semibold">Tipo de Servicio</h2>
-            </CardHeader>
             <CardContent>
             <Tabs defaultValue="qrVisitor">
                 <TabsList className="grid w-full grid-cols-2">

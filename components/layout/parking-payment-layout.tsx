@@ -10,8 +10,8 @@ export default async function ParkingPaymentLayout(props: PropsWithChildren) {
     return (
         <Providers defaultOpenMenu={defaultOpenMenu}>
             <AppSidebar />
-            <SidebarTrigger/>
-            <main>
+            <SidebarTrigger className="fixed md:sticky z-50"/>
+            <main className="flex justify-center items-start w-full">
                 {props.children}
             </main>
         </Providers>
