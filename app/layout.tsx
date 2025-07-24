@@ -1,7 +1,7 @@
 import "./globals.css";
 import { ubuntu, ubuntuSans } from "@/config/fonts";
 import RootProviders from "./providers";
-import Head from "next/head";
+import { Toaster } from "@/components/ui/sonner";
 
 export default function RootLayout({
   children,
@@ -19,6 +19,7 @@ export default function RootLayout({
       >
         <RootProviders>
           {children}
+          <Toaster richColors/>
         </RootProviders>
       </body>
     </html>

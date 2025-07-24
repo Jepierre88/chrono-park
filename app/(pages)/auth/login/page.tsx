@@ -13,6 +13,7 @@ import { ILoginParamsEntity } from "@/lib/types/entities/auth/login-params.entit
 import { login } from "@/lib/actions/auth/login.action";
 import { LoginSchema } from "@/lib/types/schemas/login.schema";
 import { loginService } from "@/lib/services/login.service";
+import { Loader } from "lucide-react";
 
 export default function LoginPage() {
 
@@ -26,12 +27,12 @@ export default function LoginPage() {
     const onSubmit = async (data: ILoginParamsEntity) => {
         try {
             setLoading(true);
-            const result = await loginService(data);
-
-            if(!result) return toast.error("Error inesperado. No se pudo completar el login.");
-
+            const result = await loginService(data).catch(() => {
+                toast.error("Error al iniciar sesión. Por favor, verifica tus credenciales.");
+                return null;
+            });
+            if (!result) return;
             await login(result).then(() => router.push("/parking-payment"));
-
         } catch (err) {
             console.error("Error durante el login:", err);
             toast.error("Error inesperado durante el login.");
@@ -39,6 +40,7 @@ export default function LoginPage() {
             setLoading(false);
         }
     };
+    
 
 
     return (
@@ -80,7 +82,7 @@ export default function LoginPage() {
                 </CardContent>
                 <CardFooter className="flex-col gap-2">
                     <Button type="submit" className="w-full" disabled={loading}>
-                        Iniciar sesión
+                        {loading ? <Loader className="animate-spin" /> : "Iniciar sesión"}
                     </Button>
                 </CardFooter>
             </form>

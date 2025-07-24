@@ -52,15 +52,11 @@ axiosInstance.interceptors.response.use(
         });
 
         const showToast = error.config?.headers?.['X-Show-Toast'] !== 'false';
-
-        if (showToast && typeof window !== 'undefined') {
-            // Manejo de errores específicos
+        if (showToast) {
             switch (error.response?.status) {
                 case 401:
-                    // Token expirado o no válido
                     toast.error('Sesión expirada. Por favor, inicia sesión nuevamente.');
                     
-                    // Redirigir al login si no estamos ya ahí
                     if (typeof window !== 'undefined' && !window.location.pathname.includes('/auth/login')) {
                         window.location.href = '/auth/login';
                     }

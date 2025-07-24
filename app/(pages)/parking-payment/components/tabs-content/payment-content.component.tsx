@@ -16,12 +16,10 @@ export default function PaymentContent() {
 
     return (
         <article className="flex gap-6 p-4">
-
             <div className="flex-1 text-4xl font-sans font-bold flex items-center gap-2">
                 <Label className="text-4xl">TOTAL:</Label>
                 <span>${paymentData.total.toLocaleString("es-CO")}</span>
             </div>
-
             <div className="flex flex-1 flex-col gap-4 justify-center">
                 <div>
                     <Label className="font-sans">Dinero recibido</Label>
@@ -30,7 +28,6 @@ export default function PaymentContent() {
                         icon={<DollarSign size={20} className="text-neutral-500" />}
                     />
                 </div>
-
                 <div>
                     <Label className="font-sans">Medio de pago</Label>
                     <Select>
@@ -46,8 +43,6 @@ export default function PaymentContent() {
                         </SelectContent>
                     </Select>
                 </div>
-
-
             </div>
             <div className="flex flex-1 flex-col justify-center gap-4">
                 <div className="flex gap-2 h-12 items-center">

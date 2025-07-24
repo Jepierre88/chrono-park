@@ -6,7 +6,7 @@ import { PropsWithChildren } from "react";
 export default function RootProviders(props: PropsWithChildren) {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-      {props.children}
+      <CommonProvider>{props.children}</CommonProvider>
     </ThemeProvider>
   );
 }
