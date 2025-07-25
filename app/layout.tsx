@@ -1,27 +1,15 @@
+import RootLayout from "@/components/layout/root-layout";
 import "./globals.css";
-import { ubuntu, ubuntuSans } from "@/config/fonts";
-import RootProviders from "./providers";
-import { Toaster } from "@/components/ui/sonner";
 
-export default function RootLayout({
+export default function Layout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   
   return (
-    <html lang="es" suppressHydrationWarning>
-      <head>
-        <title>ChronoPark</title>
-      </head>
-      <body
-        className={`${ubuntuSans.className} ${ubuntu.className} antialiased`}
-      >
-        <RootProviders>
-          {children}
-          <Toaster richColors/>
-        </RootProviders>
-      </body>
-    </html>
+    <RootLayout>
+      {children}
+    </RootLayout>
   );
 }
