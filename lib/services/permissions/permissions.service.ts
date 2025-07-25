@@ -1,4 +1,3 @@
-// lib/services/permissions.service.ts
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/shared/next-auth.config";
 import EPermissions from "@/lib/shared/enums/permissions.enum";

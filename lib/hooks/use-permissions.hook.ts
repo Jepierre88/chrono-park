@@ -2,7 +2,7 @@
 'use client'
 
 import { useSession } from "next-auth/react";
-import { permissionsService } from "@/lib/services/permissions.service";
+import { permissionsService } from "@/lib/services/permissions/permissions.service";
 import EPermissions from "@/lib/shared/enums/permissions.enum";
 import { useMemo } from "react";
 

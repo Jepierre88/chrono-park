@@ -12,8 +12,8 @@ import { useRouter } from "next/navigation";
 import { ILoginParamsEntity } from "@/lib/types/entities/auth/login-params.entity";
 import { login } from "@/lib/actions/auth/login.action";
 import { LoginSchema } from "@/lib/types/schemas/login.schema";
-import { loginService } from "@/lib/services/login.service";
 import { Loader } from "lucide-react";
+import { loginService } from "@/lib/services/auth/login.service";
 
 export default function LoginPage() {
 

@@ -1,8 +1,8 @@
 // Servicios encargados de consumir APIS desde el lado del cliente
 
+import { axiosWithoutToast } from "@/lib/shared/axios.config";
 import { ILoginParamsEntity } from "@/lib/types/entities/auth/login-params.entity";
 import { ILoginResponseEntity } from "@/lib/types/entities/auth/login-response.entity";
-import { axiosWithoutToast } from "../shared/axios.config";
 
 export const loginService = async (credentials: ILoginParamsEntity): Promise<ILoginResponseEntity> => {
     try {

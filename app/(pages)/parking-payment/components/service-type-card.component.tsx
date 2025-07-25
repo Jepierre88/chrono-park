@@ -1,6 +1,6 @@
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { getServices } from "@/lib/actions/parking-payment/services/services.action";
+import { getServices } from "@/lib/actions/parking-payment/services.action";
 import EServiceTypes from "@/lib/types/enums/service-types.enum";
 import { QrVisitorContent } from "./tabs-content/qr-visitor-content.component";
 
