@@ -1,4 +1,4 @@
-// components/auth/permission-guard.tsx
+// USADO PARA PROTEGER COMPONEENTES COMO BOTONES
 'use client'
 
 import { usePermissions } from "@/lib/hooks/use-permissions.hook";

@@ -1,13 +1,14 @@
 "use client"
 
 import * as React from "react"
-import { Building2 } from "lucide-react"
+import { Building2, ChevronsUpDown, Plus } from "lucide-react"
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 
 interface TeamSwitcherProps {
   teams?: {
@@ -24,7 +25,7 @@ export function TeamSwitcher({ teams = [] }: TeamSwitcherProps) {
   return (
     <SidebarMenu>
       <SidebarMenuItem>
-        {/* <DropdownMenu>
+        <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <SidebarMenuButton
               size="lg"
@@ -66,8 +67,8 @@ export function TeamSwitcher({ teams = [] }: TeamSwitcherProps) {
               <div className="font-medium text-muted-foreground">Agregar equipo</div>
             </DropdownMenuItem>
           </DropdownMenuContent>
-        </DropdownMenu> */}
-        <SidebarMenuButton
+        </DropdownMenu>
+        {/* <SidebarMenuButton
           size="lg"
           className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
         >
@@ -78,7 +79,7 @@ export function TeamSwitcher({ teams = [] }: TeamSwitcherProps) {
             <span className="truncate font-semibold">{activeTeam.name}</span>
             <span className="truncate text-xs">{activeTeam.plan}</span>
           </div>
-        </SidebarMenuButton>
+        </SidebarMenuButton> */}
 
       </SidebarMenuItem>
     </SidebarMenu>

@@ -3,6 +3,7 @@
 import { ChevronRight, type LucideIcon } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { useSession } from "next-auth/react"
 import EPermissions from "@/lib/shared/enums/permissions.enum"
 
 import {
@@ -21,6 +22,7 @@ import {
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar"
 import { usePermissions } from "@/lib/hooks/use-permissions.hook"
+import { NavSkeleton } from "./nav-skeleton.component"
 
 interface NavMainProps {
   items: {
@@ -28,7 +30,7 @@ interface NavMainProps {
     url: string
     icon?: LucideIcon
     isActive?: boolean
-    requiredPermissions?: EPermissions[] // Agregar permisos requeridos
+    requiredPermissions?: EPermissions[]
     items?: {
       title: string
       url: string
@@ -39,13 +41,18 @@ interface NavMainProps {
 
 export function NavMain({ items }: NavMainProps) {
   const pathname = usePathname()
+  const { data: session, status } = useSession()
   const { filterByPermissions } = usePermissions()
 
   const isRouteActive = (href: string) => pathname === href
   const isRouteActiveOrChild = (href: string) => 
     pathname === href || pathname.startsWith(`${href}/`)
 
-  // Filtrar items por permisos
+  // Mostrar skeleton mientras carga la sesión
+  if (status === "loading") {
+    return <NavSkeleton />
+  }
+
   const filteredItems = filterByPermissions(items)
 
   return (
@@ -53,7 +60,6 @@ export function NavMain({ items }: NavMainProps) {
       <SidebarGroupLabel>Navegación</SidebarGroupLabel>
       <SidebarMenu>
         {filteredItems.map((item) => {
-          // Filtrar subitems por permisos
           const filteredSubItems = item.items ? filterByPermissions(item.items) : []
           
           return (

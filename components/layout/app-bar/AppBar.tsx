@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { DollarSign, Users, TrendingUp, ArrowRightLeft, TrendingDown } from "lucide-react"
+import { DollarSign, Users } from "lucide-react"
 import { useSession } from "next-auth/react"
 import EPermissions from "@/lib/shared/enums/permissions.enum"
 
@@ -20,66 +20,45 @@ import { NavUser } from "./nav-user.component"
 const data = {
   navMain: [
     {
-      title: "PAGOS",
+      title: "Parqueadero",
       url: "/parking-payment",
       icon: DollarSign,
       requiredPermissions: [EPermissions.VIEW_PARKING_PAYMENT],
       items: [
         {
-          title: "QR VISITANTE",
+          title: "Pago de Parqueadero",
           url: "/parking-payment",
           requiredPermissions: [EPermissions.VIEW_PARKING_PAYMENT],
         },
         {
-          title: "QR RESIDENTE",
-          url: "/parking-payment/qr-resident",
-          requiredPermissions: [EPermissions.VIEW_PARKING_PAYMENT],
+          title:"Ingresos",
+          url: "/parking-payment/incomes",
+          requiredPermissions: [EPermissions.VIEW_INCOMES],
         },
         {
-          title: "QR EMPLEADO",
-          url: "/parking-payment/qr-employee",
-          requiredPermissions: [EPermissions.VIEW_PARKING_PAYMENT],
+          title: "Transacciones",
+          url: "/parking-payment/transactions",
+          requiredPermissions: [EPermissions.VIEW_TRANSACTIONS],
+        },
+        {
+          title: "Salidas",
+          url: "/parking-payment/outcomes",
+          requiredPermissions: [EPermissions.VIEW_OUTCOMES],
         },
       ],
     },
     {
-      title: "USUARIOS",
-      url: "/parking-payment/users",
+      title: "Administración",
+      url: "/admin",
       icon: Users,
       requiredPermissions: [EPermissions.VIEW_USERS],
       items: [
         {
-          title: "Lista de Usuarios",
-          url: "/parking-payment/users",
+          title: "Usuarios",
+          url: "/admin/users",
           requiredPermissions: [EPermissions.VIEW_USERS],
-        },
-        {
-          title: "Crear Usuario",
-          url: "/parking-payment/users/create",
-          requiredPermissions: [EPermissions.CREATE_USERS],
-        },
+        }
       ],
-    },
-    {
-      title: "INGRESOS",
-      url: "/parking-payment/incomes",
-      icon: TrendingUp,
-      requiredPermissions: [EPermissions.VIEW_INCOMES],
-      items: [],
-    },
-    {
-      title: "TRANSACCIONES",
-      url: "/parking-payment/transactions",
-      icon: ArrowRightLeft,
-      requiredPermissions: [EPermissions.VIEW_TRANSACTIONS],
-      items: [],
-    },
-    {
-      title: "EGRESOS",
-      url: "/parking-payment/outcomes",
-      icon: TrendingDown,
-      requiredPermissions: [EPermissions.VIEW_OUTCOMES],
-      items: [],
     },
   ],
 }
