@@ -41,7 +41,7 @@ interface NavMainProps {
 
 export function NavMain({ items }: NavMainProps) {
   const pathname = usePathname()
-  const { data: session, status } = useSession()
+  const { status } = useSession()
   const { filterByPermissions } = usePermissions()
 
   const isRouteActive = (href: string) => pathname === href

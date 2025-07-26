@@ -1,6 +1,7 @@
 import { ubuntu, ubuntuSans } from "@/config/fonts";
 import RootProviders from "./root-providers";
 import { Toaster } from "@/components/ui/sonner";
+import Head from "next/head";
 
 export default function RootLayout({
   children,
@@ -10,9 +11,9 @@ export default function RootLayout({
   
   return (
     <html lang="es" suppressHydrationWarning>
-      <head>
+      <Head>
         <title>ChronoPark</title>
-      </head>
+      </Head>
       <body
         className={`${ubuntuSans.className} ${ubuntu.className} antialiased`}
       >

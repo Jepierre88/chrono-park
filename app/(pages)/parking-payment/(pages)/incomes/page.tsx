@@ -13,11 +13,15 @@ export default async function IncomesPages({searchParams}: IUrlSearchParams) {
 
     return (
        <section>
+        {/* Header section */}
+        <header className="space-y-2 my-6">
+            <h1 className="text-2xl font-bold">Ingresos</h1>
+            <p className="text-muted-foreground">Aquí puedes ver y gestionar los ingresos registrados.</p>
+        </header>
 
         <Card>
             <CardHeader className="flex flex-col lg:flex-row items-center justify-center sm:justify-between">
-               <CardTitle ><h1>Ingresos</h1></CardTitle>
-                <CardAction>
+                <CardAction className="w-full sm:w-auto">
                     <TableFilters/>
                 </CardAction>
             </CardHeader>

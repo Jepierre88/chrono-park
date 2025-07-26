@@ -1,4 +1,3 @@
-import axiosServerInstance from "@/lib/shared/axios-server.config";
 import IPaginationParams from "@/lib/types/interfaces/pagination-params.interface";
 
 export async function getIncomesAction(params: IPaginationParams) {
@@ -10,6 +9,8 @@ export async function getIncomesAction(params: IPaginationParams) {
   // });
   // return response.data
 
+  await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate delay
+  
   return [
     {
       id: 1,

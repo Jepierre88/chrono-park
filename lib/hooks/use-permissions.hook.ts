@@ -8,7 +8,11 @@ import { useMemo } from "react";
 
 export function usePermissions() {
     const { data: session } = useSession();
-    const userPermissions = session?.user?.permissions || [];
+    
+    const userPermissions = useMemo(() => 
+        session?.user?.permissions || [], 
+        [session?.user?.permissions]
+    );
 
     const permissions = useMemo(() => ({
         // Métodos principales
