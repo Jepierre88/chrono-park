@@ -53,7 +53,7 @@ export const QrVisitorContent = ({ services }: { services: IServicesEntity[] }) 
                 deviceId: paymentData.deviceId,
             });
         }
-    }, [debouncedIdentificationCode, selectedService]);
+    }, [debouncedIdentificationCode, selectedService, payDay, paymentData.plate, paymentData.deviceId, validatePayment]);
 
 
     const validateParamsToValidate = ()=>{
