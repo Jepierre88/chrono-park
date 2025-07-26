@@ -1,4 +1,4 @@
-import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardAction, CardContent, CardHeader } from "@/components/ui/card";
 import { getIncomesService } from "@/lib/services/parking-payment/incomes.service";
 import IUrlSearchParams from "@/lib/types/interfaces/url-search-params.interface";
 import TableFilters from "./components/table-filters.component";

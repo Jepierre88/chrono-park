@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import PaymentSummaryContent from "./tabs-content/payment-summary-content.component";
 
 export default function PaymentSummaryCard() {

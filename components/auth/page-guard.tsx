@@ -1,7 +1,6 @@
 // USADO PARA PROTEGER PÁGINAS COMPLETAS
 'use client'
 
-import { useState } from 'react'
 import { usePermissions } from '@/lib/hooks/use-permissions.hook'
 import { useSession } from 'next-auth/react'
 import EPermissions from '@/lib/shared/enums/permissions.enum'
