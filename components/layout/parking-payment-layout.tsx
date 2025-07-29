@@ -13,21 +13,23 @@ export default async function ParkingPaymentLayout(props: PropsWithChildren) {
     return (
         <Providers defaultOpenMenu={defaultOpenMenu}>
             <AppSidebar />
-            <SidebarInset className="flex flex-col h-screen relative">
-                <header className="flex h-16 shrink-0 items-center gap-2 border-b bg-background sticky top-0 z-10">
-                    <div className="flex items-center gap-2 px-4">
-                        <SidebarTrigger className="-ml-1" />
-                        <DynamicBreadcrumb />
+            <SidebarInset className="flex flex-col h-screen overflow-hidden">
+                <header className="flex h-16 shrink-0 items-center gap-2 border-b bg-background sticky top-0 z-10 min-w-0">
+                    <div className="flex items-center gap-2 px-4 min-w-0">
+                        <SidebarTrigger className="-ml-1 shrink-0"/>
+                        <div className="min-w-0 overflow-hidden">
+                            <DynamicBreadcrumb />
+                        </div>
                     </div>
                 </header>
-                
-                <main className="flex-1 overflow-auto">
-                    <div className="container mx-auto p-6">
-                        {props.children}
+                <main className="flex-1 overflow-hidden">
+                    <div className="h-full overflow-auto">
+                        <div className="container mx-auto p-6 min-w-fit">
+                            {props.children}
+                        </div>
                     </div>
                 </main>
 
-                {/* Theme Switch - Fixed position bottom right */}
                 <div className="fixed bottom-6 right-6 z-50">
                     <ThemeSwitch />
                 </div>

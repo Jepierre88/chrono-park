@@ -13,7 +13,6 @@ import {
   useReactTable,
   VisibilityState,
 } from "@tanstack/react-table"
-import { z } from "zod"
 
 import {
   Table,
@@ -24,55 +23,65 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
-import { Edit, Eye } from "lucide-react"
-
-export const schema = z.object({
-  id: z.number(),
-  header: z.string(),
-  type: z.string(),
-  status: z.string(),
-  target: z.string(),
-  limit: z.string(),
-  reviewer: z.string(),
-})
-
+import { Edit, Eye, Printer } from "lucide-react"
+import IIncome from "@/lib/types/entities/parking-payment/incomes/income.entity"
 
 
 interface DataTableProps {
-  data: z.infer<typeof schema>[]
-    onEdit: (item: z.infer<typeof schema>) => void
-    onView: (item: z.infer<typeof schema>) => void
+  data: IIncome[]
+  onEdit: (item: IIncome) => void
+  onView: (item: IIncome) => void
 }
 
 export function IncomesTable({ data, onEdit, onView }: DataTableProps) {
 
 
     // Definición básica de columnas - puedes customizar según tus necesidades
-const columns: ColumnDef<z.infer<typeof schema>>[] = [
+const columns: ColumnDef<IIncome>[] = [
   {
-    accessorKey: "header",
-    header: "Header",
+    accessorKey: "id",
+    header: "Id",
     cell: (info) => info.getValue(),
   },
   {
-    accessorKey: "type",
-    header: "Type",
+    accessorKey: "identificationId",
+    header: "Identification Id",
   },
   {
-    accessorKey: "status",
-    header: "Status",
+    accessorKey: "identificationMethod",
+    header: "Identification Method",
   },
   {
-    accessorKey: "target",
-    header: "Target",
+    accessorKey: "incomePointId",
+    header: "Income Point Id",
   },
   {
-    accessorKey: "limit",
-    header: "Limit",
+    accessorKey: "peopleAmount",
+    header: "People Amount",
   },
   {
-    accessorKey: "reviewer",
-    header: "Reviewer",
+    accessorKey: "plate",
+    header: "Plate",
+  },
+  {
+    accessorKey: "plateImage",
+    header: "Plate Image",
+  },
+  {
+    accessorKey: "processId",
+    header: "Process Id",
+  },
+  {
+    accessorKey: "state",
+    header: "State",
+  },
+  {
+    accessorKey: "vehicle",
+    header: "Vehicle",
+  },
+  {
+    accessorKey: "vehicleKind",
+    header: "Vehicle Kind",
   },
   {
     accessorKey: "actions",
@@ -83,6 +92,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
         <div className="flex gap-2">
           <Button variant={"ghost"} className="text-primary" onClick={() => onView(item)}><Eye/></Button>
           <Button variant={"ghost"} className="text-orange-500" onClick={() => onEdit(item)}><Edit/></Button>
+          <Button variant={"ghost"} className="text-red-500" onClick={() => console.log(item)}><Printer/></Button>
         </div>
       )
     }
@@ -114,8 +124,8 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
   })
 
   return (
-      <div className="rounded-md border">
-        <Table className="w-full overflow-x-auto">
+      <div className="rounded-md border w-full">
+        <Table className="w-full overflow-x-auto min-w-full">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
