@@ -23,7 +23,7 @@ export const QrVisitorContent = ({ services }: { services: IServicesEntity[] }) 
     const { paymentData, setPaymentData, validatePayment } = useParkingPaymentContext();
 
     // Initialize the form with default values
-    const { control, handleSubmit, watch, setValue } = useForm<FormValues>({
+    const { control, handleSubmit, watch } = useForm<FormValues>({
         defaultValues: {
             selectedService: paymentData.selectedService ? paymentData.selectedService.toString() : "",
             identificationCode: paymentData.identificationCode ?? "",
@@ -56,7 +56,7 @@ export const QrVisitorContent = ({ services }: { services: IServicesEntity[] }) 
     }, [debouncedIdentificationCode, selectedService, payDay, paymentData.plate, paymentData.deviceId, validatePayment]);
 
 
-    const validateParamsToValidate = ()=>{
+    const validateParamsToValidate = () => {
         return !selectedService || !identificationCode;
     }
 

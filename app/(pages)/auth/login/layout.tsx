@@ -1,4 +1,4 @@
-import AuthLayout from "@/components/layout/auth-layout";
+import AuthLayout from "@/components/layout/modules/auth-layout";
 import { PropsWithChildren } from "react";
 
 export default function Layout(props: PropsWithChildren) {

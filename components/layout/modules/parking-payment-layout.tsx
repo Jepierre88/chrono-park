@@ -1,22 +1,23 @@
-import { PropsWithChildren } from "react"
-import Providers from "./parkin-payment.providers"
-import { SidebarInset, SidebarTrigger } from "../ui/sidebar"
+import { SidebarInset, SidebarTrigger } from "@/components/ui/sidebar"
 import { cookies } from "next/headers"
-import { AppSidebar } from "./app-bar/AppBar"
-import { DynamicBreadcrumb } from "./dynamic-breadcrumbs/dynamic-breadcrumbs.component"
-import { ThemeSwitch } from "./theme-switch.component"
+import { PropsWithChildren } from "react"
+import { AppSidebar } from "../app-bar/AppBar"
+import { DynamicBreadcrumb } from "../dynamic-breadcrumbs/dynamic-breadcrumbs.component"
+import Providers from "../providers/parkin-payment.providers"
+import { ThemeSwitch } from "../theme-switch.component"
+
 
 export default async function ParkingPaymentLayout(props: PropsWithChildren) {
     const cookieStore = await cookies()
     const defaultOpenMenu = cookieStore.get("sidebar_state")?.value !== "false"
-    
+
     return (
         <Providers defaultOpenMenu={defaultOpenMenu}>
             <AppSidebar />
             <SidebarInset className="flex flex-col h-screen overflow-hidden">
                 <header className="flex h-16 shrink-0 items-center gap-2 border-b bg-background sticky top-0 z-10 w-full">
                     <div className="flex items-center gap-2 px-4 min-w-0 w-full">
-                        <SidebarTrigger className="-ml-1 shrink-0"/>
+                        <SidebarTrigger className="-ml-1 shrink-0" />
                         <div className="min-w-0 overflow-hidden flex-1">
                             <DynamicBreadcrumb />
                         </div>

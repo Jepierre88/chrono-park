@@ -1,4 +1,4 @@
-import RootLayout from "@/components/layout/root-layout";
+import RootLayout from "@/components/layout/modules/root-layout";
 import "./globals.css";
 
 export default function Layout({
@@ -6,7 +6,7 @@ export default function Layout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  
+
   return (
     <RootLayout>
       {children}
