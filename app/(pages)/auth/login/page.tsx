@@ -40,11 +40,11 @@ export default function LoginPage() {
             setLoading(false);
         }
     };
-    
+
 
 
     return (
-        <Card className="w-full max-w-sm">
+        <Card className="w-full max-w-sm mx-auto">
             <CardHeader>
                 <CardTitle>Inicia sesión en tu cuenta</CardTitle>
                 <CardDescription>
@@ -75,7 +75,7 @@ export default function LoginPage() {
                                     ¿Olvidaste tu contraseña?
                                 </Link>
                             </div>
-                            <Input id="password" type="password" required {...register("password", { required: true })} />
+                            <Input id="password" type="password" required {...register("password", { required: true })} placeholder="********" />
                             {errors.password && <span className="text-red-500 text-sm">{errors.password.message}</span>}
                         </div>
                     </div>

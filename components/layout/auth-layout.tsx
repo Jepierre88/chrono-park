@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { PropsWithChildren } from "react";
+import DARK_LOGO from "@/public/images/DARK_LOGO.png";
+import LIGHT_LOGO from "@/public/images/WHITE_LOGO.png";
 
 export default function AuthLayout({
     children,
@@ -16,11 +18,31 @@ export default function AuthLayout({
                 />
             </picture>
 
-            <article className="flex-1 lg:flex-[0.4] flex items-center justify-center bg-muted p-4 sm:p-6 lg:p-8 min-h-screen">
-                <div className="w-full max-w-md">
-                    {children}
+            <article className="flex-1 lg:flex-[0.4] flex justify-between bg-muted p-4 sm:p-6 lg:p-8 min-h-screen flex-col">
+                <div className="flex items-center justify-center flex-1">
+                    <div className="w-full max-w-md">
+                        {children}
+                    </div>
+                </div>
+                <div className="flex justify-center w-full flex-col justify-center items-center">
+                    <Image
+                        src={LIGHT_LOGO}
+                        alt="Logo"
+                        width={150}
+                        height={50}
+                        className="dark:hidden"
+                    />
+                    <Image
+                        src={DARK_LOGO}
+                        alt="Logo"
+                        width={150}
+                        height={50}
+                        className="hidden dark:block"
+                    />
+                    <small>© 2025 ChronoSoft. Todos los derechos reservados.</small>
                 </div>
             </article>
+
         </section>
     );
 }
