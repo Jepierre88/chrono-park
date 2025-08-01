@@ -1,6 +1,7 @@
 import IIncome from "@/lib/types/entities/parking-payment/incomes/income.entity";
 import IPaginationParams from "@/lib/types/interfaces/pagination-params.interface";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export async function getIncomesAction(params: IPaginationParams): Promise<IIncome[]> {
   // const response = await axiosServerInstance.get("/incomes/pp", {
   //   params: {

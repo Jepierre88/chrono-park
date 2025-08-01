@@ -53,6 +53,7 @@ export const QrVisitorContent = ({ services }: { services: IServicesEntity[] }) 
                 deviceId: paymentData.deviceId,
             });
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [debouncedIdentificationCode, selectedService, payDay, paymentData.plate, paymentData.deviceId, validatePayment]);
 
 

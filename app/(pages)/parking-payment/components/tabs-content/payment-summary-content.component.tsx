@@ -3,7 +3,6 @@ import { DataRow } from "@/components/shared/data-row.component";
 import { Separator } from "@/components/ui/separator";
 import { useParkingPaymentContext } from "@/lib/contexts/parking-payment/parking-payment.context";
 import { formatDate } from "@/lib/utils";
-import { Label } from "@radix-ui/react-label";
 import { useSession } from "next-auth/react";
 
 export default function PaymentSummaryContent() {
