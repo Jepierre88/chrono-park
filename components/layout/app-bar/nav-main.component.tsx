@@ -62,6 +62,25 @@ export function NavMain({ items }: NavMainProps) {
         {filteredItems.map((item) => {
           const filteredSubItems = item.items ? filterByPermissions(item.items) : []
           
+          // Si no tiene sub-elementos, renderizar como enlace directo
+          if (!item.items || filteredSubItems.length === 0) {
+            return (
+              <SidebarMenuItem key={item.title}>
+                <SidebarMenuButton 
+                  asChild
+                  tooltip={item.title}
+                  isActive={isRouteActive(item.url)}
+                >
+                  <Link href={item.url}>
+                    {item.icon && <item.icon />}
+                    <span>{item.title}</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            )
+          }
+          
+          // Si tiene sub-elementos, renderizar como collapsible
           return (
             <Collapsible
               key={item.title}

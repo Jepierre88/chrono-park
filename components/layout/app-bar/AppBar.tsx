@@ -16,49 +16,44 @@ import { TeamSwitcher } from "./team-switcher.component"
 import { NavMain } from "./nav-main.component"
 import { NavUser } from "./nav-user.component"
 
-// Datos con permisos requeridos
 const data = {
   navMain: [
     {
-      title: "Parqueadero",
+      title: "Pago de Parqueadero",
       url: "/parking-payment",
       icon: DollarSign,
       requiredPermissions: [EPermissions.VIEW_PARKING_PAYMENT],
+    },
+    {
+      title: "Ingresos",
+      url: "/parking-payment/incomes",
+      icon: DollarSign,
       items: [
         {
-          title: "Pago de Parqueadero",
-          url: "/parking-payment",
-          requiredPermissions: [EPermissions.VIEW_PARKING_PAYMENT],
-        },
-        {
-          title:"Ingresos",
+          title: "Ver Ingresos",
           url: "/parking-payment/incomes",
           requiredPermissions: [EPermissions.VIEW_INCOMES],
         },
-        {
-          title: "Transacciones",
-          url: "/parking-payment/transactions",
-          requiredPermissions: [EPermissions.VIEW_TRANSACTIONS],
-        },
-        {
-          title: "Salidas",
-          url: "/parking-payment/outcomes",
-          requiredPermissions: [EPermissions.VIEW_OUTCOMES],
-        },
       ],
+      requiredPermissions: [EPermissions.VIEW_INCOMES],
     },
     {
-      title: "Administración",
-      url: "/admin",
+      title: "Transacciones",
+      url: "/parking-payment/transactions",
+      icon: DollarSign,
+      requiredPermissions: [EPermissions.VIEW_TRANSACTIONS],
+    },
+    {
+      title: "Salidas",
+      url: "/parking-payment/outcomes",
+      icon: DollarSign,
+      requiredPermissions: [EPermissions.VIEW_OUTCOMES],
+    },
+    {
+      title: "Usuarios",
+      url: "/admin/users",
       icon: Users,
       requiredPermissions: [EPermissions.VIEW_USERS],
-      items: [
-        {
-          title: "Usuarios",
-          url: "/admin/users",
-          requiredPermissions: [EPermissions.VIEW_USERS],
-        }
-      ],
     },
   ],
 }
